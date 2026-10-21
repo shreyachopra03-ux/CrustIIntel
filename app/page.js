@@ -25,7 +25,6 @@ export default function WarRoom() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
 
-  // Live real-time state management for signals and metrics
   const [signalsList, setSignalsList] = useState(SIGNALS);
   const [metrics, setMetrics] = useState({
     companies_tracked: MARKET_METRICS.companies_tracked,
@@ -37,12 +36,11 @@ export default function WarRoom() {
     last_refresh: Date.now()
   });
 
-  // Simulated live monitoring engine: appends a new B2B competitive signal periodically
   useEffect(() => {
     const SIMULATED_SIGNALS = [
       {
         id: 'sim_sig_1',
-        company_id: 'comp_001', // Apollo
+        company_id: 'comp_001',
         company_name: 'Apollo.io',
         type: 'product_launch',
         icon: '🚀',
@@ -53,7 +51,7 @@ export default function WarRoom() {
       },
       {
         id: 'sim_sig_2',
-        company_id: 'comp_002', // ZoomInfo
+        company_id: 'comp_002',
         company_name: 'ZoomInfo',
         type: 'talent_layoff',
         icon: '👥',
@@ -64,7 +62,7 @@ export default function WarRoom() {
       },
       {
         id: 'sim_sig_3',
-        company_id: 'comp_003', // Lusha
+        company_id: 'comp_003',
         company_name: 'Lusha',
         type: 'funding_round',
         icon: '💰',
@@ -75,7 +73,7 @@ export default function WarRoom() {
       },
       {
         id: 'sim_sig_4',
-        company_id: 'comp_004', // Coresignal
+        company_id: 'comp_004',
         company_name: 'Coresignal',
         type: 'hiring_surge',
         icon: '📈',
@@ -104,12 +102,11 @@ export default function WarRoom() {
       }));
 
       index = (index + 1) % SIMULATED_SIGNALS.length;
-    }, 45000); // Trigger a new signal event every 45 seconds
+    }, 45000);
 
     return () => clearInterval(interval);
   }, []);
 
-  // Keyboard shortcuts
   useEffect(() => {
     function handleKey(e) {
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
@@ -176,7 +173,6 @@ export default function WarRoom() {
       <MetricsBar metrics={metrics} />
 
       <div className="dashboard">
-        {/* Left column */}
         <div className="dashboard-main">
           <MarketMap
             selfCompany={TRACKED_COMPANY}
@@ -189,7 +185,6 @@ export default function WarRoom() {
           />
         </div>
 
-        {/* Right column */}
         <div className="dashboard-sidebar">
           <IntelBrief briefs={INTEL_BRIEFS} />
           <TalentFlow flows={TALENT_FLOWS} onTalentAnalyzed={handleTalentAnalyzed} />
