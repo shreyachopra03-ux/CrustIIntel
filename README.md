@@ -1,6 +1,6 @@
 # 🦀 CrustIntel
 
-### Autonomous Competitive Intelligence — Built on Crustdata × Claude
+### Autonomous Competitive Intelligence - Built on Crustdata × Claude
 
 <div align="center">
 
@@ -8,16 +8,14 @@
 [![Claude Sonnet 4](https://img.shields.io/badge/Claude-Sonnet_4-5A4BBA?style=for-the-badge&logo=anthropic&logoColor=white)](https://anthropic.com/)
 [![React 19](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![Crustdata APIs](https://img.shields.io/badge/Data_Layer-Crustdata_APIs-FF4B4B?style=for-the-badge)](https://crustdata.com/)
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed-Vercel-000000?style=for-the-badge&logo=vercel)](https://crust-intel.vercel.app/)
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed-Vercel-000000?style=for-the-badge&logo=vercel)](https://crust-i-intel.vercel.app/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-22c55e?style=for-the-badge)](LICENSE)
 
 </div>
 
 <div align="center">
 
-**[🚀 Live Demo](https://crust-intel.vercel.app/)** &nbsp;·&nbsp; **[Meta-Demo ↓](#the-meta-demo)** &nbsp;·&nbsp; **[Architecture ↓](#system-architecture)**
-
-*Built as a technical submission for the Applied AI Engineer & Forward Deployed Engineer roles at Crustdata (YC F24)*
+**[🚀 Live Demo](https://crust-i-intel.vercel.app/)** &nbsp;·&nbsp; **[Meta-Demo ↓](#the-meta-demo)** &nbsp;·&nbsp; **[Architecture ↓](#system-architecture)**
 
 </div>
 
@@ -402,8 +400,8 @@ crustintel/
 ## Quick start
 
 ```bash
-git clone https://github.com/yourusername/crustintel
-cd crustintel
+git clone https://github.com/shreyachopra03-ux/CrustIIntel.git
+cd CrustIIntel
 npm install
 cp .env.example .env.local   # fill in your keys, or leave blank for demo mode
 npm run dev
@@ -411,7 +409,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000). **Works immediately with zero keys.**
 
-Or use the **[live deployment →](https://crust-intel.vercel.app/)** directly.
+Or use the **[live deployment →](https://crust-i-intel.vercel.app/)** directly.
 
 ---
 
@@ -448,7 +446,7 @@ Keys can also be pasted directly into ⚙ Settings in the app — they are store
 
 ## Deployment
 
-### Vercel (live at [crust-intel.vercel.app](https://crust-intel.vercel.app/))
+### Vercel (live at [crust-i-intel.vercel.app](https://crust-i-intel.vercel.app/))
 
 ```bash
 npx vercel --prod
@@ -502,17 +500,9 @@ export const maxDuration = 60;
 
 ---
 
-## About
-
-Built by Manoj R S — technical submission for the Applied AI Engineer and Forward Deployed Engineer positions at Crustdata, June 2026.
-
-Crustdata is backed by Y Combinator, General Catalyst, SV Angel, and A Capital, and powers AI agents for customers including Dharmesh Shah's agent.ai and Ryan Reynolds' MNTN. CrustIntel is a working proof that their core thesis — AI agents consuming structured business data autonomously — is already buildable today with the tools they have shipped.
-
----
-
 <div align="center">
 
 *Next.js 15 · React 19 · Claude Sonnet 4 · Crustdata APIs · Deployed on Vercel*
 
-**[🚀 crust-intel.vercel.app](https://crust-intel.vercel.app/)**
+**[🚀 crust-i-intel.vercel.app](https://crust-i-intel.vercel.app/)**
 </div>
