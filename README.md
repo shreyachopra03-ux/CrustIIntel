@@ -15,7 +15,7 @@
 
 <div align="center">
 
-**[🚀 Live Demo](https://crust-intel.vercel.app/)** &nbsp;·&nbsp; **[🎬 Video Walkthrough](https://www.loom.com/share/980f2f9cb2664a0790b458407d8428fc)** &nbsp;·&nbsp; **[Meta-Demo ↓](#the-meta-demo)** &nbsp;·&nbsp; **[Architecture ↓](#system-architecture)**
+**[🚀 Live Demo](https://crust-intel.vercel.app/)** &nbsp;·&nbsp; **[Meta-Demo ↓](#the-meta-demo)** &nbsp;·&nbsp; **[Architecture ↓](#system-architecture)**
 
 *Built as a technical submission for the Applied AI Engineer & Forward Deployed Engineer roles at Crustdata (YC F24)*
 
@@ -514,6 +514,5 @@ Crustdata is backed by Y Combinator, General Catalyst, SV Angel, and A Capital, 
 
 *Next.js 15 · React 19 · Claude Sonnet 4 · Crustdata APIs · Deployed on Vercel*
 
-**[🚀 crust-intel.vercel.app](https://crust-intel.vercel.app/)** · **[🎬 Loom Walkthrough](https://www.loom.com/share/980f2f9cb2664a0790b458407d8428fc)**
-
+**[🚀 crust-intel.vercel.app](https://crust-intel.vercel.app/)**
 </div>
