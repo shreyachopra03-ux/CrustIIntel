@@ -1,8 +1,3 @@
-// ============================================================
-// POST /api/talent — Claude agentic talent flow analysis
-// Claude uses Crustdata people search as a tool
-// ============================================================
-
 import { analyzeTalentFlow, getMockTalentFlow, hasValidClaudeKey } from '@/lib/ai';
 import { hasValidCrustKey } from '@/lib/crustdata';
 
@@ -37,7 +32,6 @@ export async function POST(request) {
     const validClaude = hasValidClaudeKey(activeClaude);
     const validCrust = hasValidCrustKey(activeCrust);
 
-    // Case 2: Crust Key present, Claude Key is NOT -> Show professional key error
     if (validCrust && !validClaude) {
       return Response.json(
         {
@@ -48,13 +42,11 @@ export async function POST(request) {
       );
     }
 
-    // Case 1: No API keys at all (or both invalid) -> Return mock talent analysis
     if (!validCrust && !validClaude) {
       const result = getMockTalentFlow(from_company, to_company);
       return Response.json({ result, timestamp: new Date().toISOString(), model: 'mock-mode' });
     }
 
-    // Case 3: Claude active (Crust optional — mock tool fallback)
     const result = await analyzeTalentFlow(from_company, to_company, activeClaude, activeCrust);
     return Response.json({ result, timestamp: new Date().toISOString(), model: 'claude-sonnet-4' });
 

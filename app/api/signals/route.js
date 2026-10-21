@@ -1,7 +1,3 @@
-// ============================================================
-// GET /api/signals — Return filtered competitive signals
-// ============================================================
-
 import { getSignals } from '@/lib/crustdata';
 
 export const maxDuration = 60;

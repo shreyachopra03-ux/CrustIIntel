@@ -1,8 +1,3 @@
-// ============================================================
-// POST /api/deepdive — Claude agentic competitor deep dive
-// Claude autonomously calls Crustdata tools to gather live data
-// ============================================================
-
 import { analyzeDeepDive, hasValidClaudeKey, getMockSWOT } from '@/lib/ai';
 import { getCompetitors, hasValidCrustKey } from '@/lib/crustdata';
 
@@ -35,7 +30,6 @@ export async function POST(request) {
     const validClaude = hasValidClaudeKey(activeClaude);
     const validCrust = hasValidCrustKey(activeCrust);
 
-    // Case 2: Crust Key present, Claude Key is NOT -> Show professional key error
     if (validCrust && !validClaude) {
       return Response.json(
         {
@@ -46,13 +40,11 @@ export async function POST(request) {
       );
     }
 
-    // Case 1: No API keys at all (or both invalid) -> Return mock SWOT analysis
     if (!validCrust && !validClaude) {
       const deepdive = getMockSWOT(company);
       return Response.json({ deepdive, timestamp: new Date().toISOString(), model: 'mock-mode' });
     }
 
-    // Case 3: Claude active (Crust optional — mock tool fallback)
     const competitors = getCompetitors().filter((c) => c.id !== company.id);
     const deepdive = await analyzeDeepDive(company, competitors, activeClaude, activeCrust);
     return Response.json({ deepdive, timestamp: new Date().toISOString(), model: 'claude-sonnet-4' });

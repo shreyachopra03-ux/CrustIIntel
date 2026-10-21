@@ -19,7 +19,6 @@ export default function Header({ metrics, onSearchOpen, onSettingsOpen }) {
     checkKeys();
   }, []);
 
-  // Re-check when settings may have been updated
   useEffect(() => {
     window.addEventListener('storage', checkKeys);
     window.addEventListener('focus', checkKeys);

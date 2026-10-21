@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { formatNumber, formatCurrency, formatGrowth } from '@/lib/utils';
 
-// Helper component for realistic logo
 const CompanyLogo = ({ company, size = 48 }) => {
   const [error, setError] = useState(false);
   const url = company.domain ? `https://logo.clearbit.com/${company.domain}` : null;
@@ -35,7 +34,6 @@ export default function CompanyModal({ company, signals, onClose, onSWOTGenerate
   const [liveCompany, setLiveCompany] = useState(null);
   const [loadingCompany, setLoadingCompany] = useState(false);
 
-  // Lock body scroll on mount and load live data if Crustdata key is present
   useEffect(() => {
     const originalStyle = window.getComputedStyle(document.body).overflow;
     document.body.style.overflow = 'hidden';
@@ -44,7 +42,7 @@ export default function CompanyModal({ company, signals, onClose, onSWOTGenerate
       try {
         const crustKey = localStorage.getItem('crustintel_crust_key');
         if (!crustKey || !crustKey.trim()) {
-          setLiveCompany(null); // Clear live details if key is removed
+          setLiveCompany(null);
           return;
         }
 
@@ -73,7 +71,6 @@ export default function CompanyModal({ company, signals, onClose, onSWOTGenerate
 
     loadLiveCompany();
 
-    // Re-check in real-time when settings are changed
     const handleKeyUpdate = () => {
       loadLiveCompany();
     };
@@ -142,7 +139,6 @@ export default function CompanyModal({ company, signals, onClose, onSWOTGenerate
             ✕
           </button>
 
-          {/* Company Header */}
           <div className="company-header">
             <div className="company-logo" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <CompanyLogo company={displayedCompany} size={48} />
@@ -167,7 +163,6 @@ export default function CompanyModal({ company, signals, onClose, onSWOTGenerate
             </div>
           </div>
 
-          {/* Stats Grid */}
           <div className="company-stats">
             <div className="company-stat">
               <div className="company-stat-value">{formatNumber(displayedHeadcount)}</div>
@@ -193,10 +188,8 @@ export default function CompanyModal({ company, signals, onClose, onSWOTGenerate
             </div>
           </div>
 
-          {/* Description */}
           <p className="company-description">{displayedCompany.description}</p>
 
-          {/* Tech Stack */}
           {displayedCompany.tech_stack && (
             <div className="company-tech-stack">
               {displayedCompany.tech_stack.map((tech) => (
@@ -205,7 +198,6 @@ export default function CompanyModal({ company, signals, onClose, onSWOTGenerate
             </div>
           )}
 
-          {/* Ratings */}
           <div style={{ display: 'flex', gap: 16, margin: '12px 0', fontSize: 12 }}>
             {displayedCompany.glassdoor_rating && (
               <span style={{ color: 'var(--text-secondary)' }}>
@@ -219,7 +211,6 @@ export default function CompanyModal({ company, signals, onClose, onSWOTGenerate
             )}
           </div>
 
-          {/* AI Analysis of latest signal */}
           {companySignals.length > 0 && (
             <div className="company-ai-analysis">
               <h4>🧠 AI Analysis</h4>
@@ -227,7 +218,6 @@ export default function CompanyModal({ company, signals, onClose, onSWOTGenerate
             </div>
           )}
 
-          {/* Related Signals */}
           {companySignals.length > 0 && (
             <div style={{ marginTop: 16 }}>
               <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 8 }}>
@@ -250,7 +240,6 @@ export default function CompanyModal({ company, signals, onClose, onSWOTGenerate
             </div>
           )}
 
-          {/* Deep Dive Action */}
           <div style={{ marginTop: 20, borderTop: '1px solid var(--border-subtle)', paddingTop: 20 }}>
             {!deepDiveData && !loadingDeepDive && (
               <button
@@ -294,7 +283,6 @@ export default function CompanyModal({ company, signals, onClose, onSWOTGenerate
                 </span>
               </h4>
 
-              {/* SWOT */}
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginTop: 12 }}>
                 <div style={{ background: 'rgba(52, 211, 153, 0.05)', padding: 10, borderRadius: '6px', border: '1px solid rgba(52, 211, 153, 0.15)' }}>
                   <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--accent-emerald)', marginBottom: 4 }}>STRENGTHS</div>
@@ -322,7 +310,6 @@ export default function CompanyModal({ company, signals, onClose, onSWOTGenerate
                 </div>
               </div>
 
-              {/* Moat Analysis */}
               <div style={{ marginTop: 12 }}>
                 <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--brand-secondary)', letterSpacing: 0.5 }}>MOAT ASSESSMENT</div>
                 <p style={{ fontSize: 12, color: 'var(--text-secondary)', marginTop: 4, lineHeight: 1.5 }}>
@@ -330,7 +317,6 @@ export default function CompanyModal({ company, signals, onClose, onSWOTGenerate
                 </p>
               </div>
 
-              {/* Attack Vectors */}
               <div style={{ marginTop: 12 }}>
                 <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--brand-secondary)', letterSpacing: 0.5 }}>VULNERABILITIES & ATTACK VECTORS</div>
                 <ul style={{ paddingLeft: 12, margin: '4px 0 0 0', fontSize: 12, color: 'var(--text-secondary)' }}>
@@ -338,7 +324,6 @@ export default function CompanyModal({ company, signals, onClose, onSWOTGenerate
                 </ul>
               </div>
 
-              {/* AI Playbook */}
               <div style={{ marginTop: 12 }}>
                 <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--accent-emerald)', letterSpacing: 0.5 }}>AUTONOMOUS PLAYBOOK</div>
                 <ul style={{ paddingLeft: 12, margin: '4px 0 0 0', fontSize: 12, color: 'var(--text-secondary)' }}>

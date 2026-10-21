@@ -84,7 +84,6 @@ export default function SettingsPanel({ onClose }) {
             <button className="modal-close" onClick={onClose}>✕</button>
           </div>
 
-          {/* Claude Key */}
           <div className="settings-section">
             <label className="settings-label">
               Claude API Key (Anthropic)
@@ -125,7 +124,6 @@ export default function SettingsPanel({ onClose }) {
             )}
           </div>
 
-          {/* Crustdata Key */}
           <div className="settings-section">
             <label className="settings-label">
               Crustdata API Key

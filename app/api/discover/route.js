@@ -1,7 +1,3 @@
-// ============================================================
-// POST /api/discover — Auto-discover competitors for a domain
-// ============================================================
-
 import { discoverCompetitors } from '@/lib/crustdata';
 
 export const maxDuration = 60;

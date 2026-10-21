@@ -1,8 +1,3 @@
-// ============================================================
-// POST /api/analyze — Claude agentic signal analysis & brief gen
-// Uses Claude tool-use to autonomously query Crustdata
-// ============================================================
-
 import {
   analyzeSignal,
   generateBrief,
@@ -41,7 +36,6 @@ export async function POST(request) {
     const validClaude = hasValidClaudeKey(activeClaude);
     const validCrust = hasValidCrustKey(activeCrust);
 
-    // Case 2: Crust Key present, Claude Key is NOT -> Show professional key error
     if (validCrust && !validClaude) {
       return Response.json(
         {
@@ -55,7 +49,6 @@ export async function POST(request) {
     const company = getTrackedCompany();
     const competitors = getCompetitors();
 
-    // Case 1: No API keys at all (or both invalid) -> Return mock responses
     if (!validCrust && !validClaude) {
       if (action === 'analyze_signal') {
         if (!signal) return Response.json({ error: 'signal object required' }, { status: 400 });
@@ -72,7 +65,6 @@ export async function POST(request) {
       }
     }
 
-    // Case 3: Claude active (Crust optional — mock tool fallback)
     if (action === 'analyze_signal') {
       if (!signal) return Response.json({ error: 'signal object required' }, { status: 400 });
       const analysis = await analyzeSignal(signal, company, activeClaude, activeCrust);

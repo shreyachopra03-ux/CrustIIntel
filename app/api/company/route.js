@@ -1,7 +1,3 @@
-// ============================================================
-// POST /api/company — Fetch live company details from Crustdata
-// ============================================================
-
 import { callCrustdata, hasValidCrustKey, getTrackedCompany, getCompetitors } from '@/lib/crustdata';
 
 export const maxDuration = 60;
@@ -22,7 +18,6 @@ export async function POST(request) {
       );
     }
 
-    // Call search_companies tool to get the detailed metrics
     const results = await callCrustdata('search_companies', { query, limit: 1 }, activeCrustKey);
 
     if (!results || results.length === 0) {
@@ -43,7 +38,6 @@ export async function POST(request) {
   } catch (err) {
     console.error('Live company lookup failed, falling back to mock:', err.message);
     
-    // Find mock fallback
     const allMock = [getTrackedCompany(), ...getCompetitors()];
     const mockCompany = allMock.find(
       (c) =>

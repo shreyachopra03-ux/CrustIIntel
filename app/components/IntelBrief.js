@@ -36,7 +36,6 @@ export default function IntelBrief({ briefs }) {
         </div>
 
         <div className="intel-body" key={activeIndex} style={{ padding: '16px 20px 20px 20px', overflowY: 'auto', flex: 1 }}>
-          {/* Threat Score Ring */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 20, marginBottom: 16 }}>
             <div className="threat-ring">
               <svg viewBox="0 0 100 100">
@@ -71,10 +70,8 @@ export default function IntelBrief({ briefs }) {
             </div>
           </div>
 
-          {/* Executive Summary */}
           <div className="intel-summary">{brief.executive_summary}</div>
 
-          {/* Sections */}
           {brief.sections?.map((section, i) => (
             <div key={i} className="intel-section">
               <div className="intel-section-heading">{section.heading}</div>
@@ -82,7 +79,6 @@ export default function IntelBrief({ briefs }) {
             </div>
           ))}
 
-          {/* Key Risks */}
           {brief.key_risks?.length > 0 && (
             <div className="intel-section">
               <div className="intel-section-heading">⚠ Key Risks</div>
@@ -94,7 +90,6 @@ export default function IntelBrief({ briefs }) {
             </div>
           )}
 
-          {/* Recommended Actions */}
           {brief.recommended_actions?.length > 0 && (
             <div className="intel-section">
               <div className="intel-section-heading">✅ Recommended Actions</div>

@@ -3,7 +3,6 @@
 import { useMemo, useState, useRef, useEffect } from 'react';
 import { getThreatColor } from '@/lib/utils';
 
-// Helper component for realistic logo
 const CompanyLogo = ({ company, size = 28 }) => {
   const [error, setError] = useState(false);
   const url = company.domain ? `https://logo.clearbit.com/${company.domain}` : null;
@@ -36,12 +35,10 @@ export default function MarketMap({ selfCompany, competitors, onCompanyClick }) 
   const dragStartRef = useRef({ x: 0, y: 0 });
   const lastTouchDistRef = useRef(null);
 
-  // Position nodes in concentric orbits based on threat level
   const nodes = useMemo(() => {
-    const centerX = 50; // percent
+    const centerX = 50;
     const centerY = 50;
 
-    // Self node at center
     const self = {
       ...selfCompany,
       x: centerX,
@@ -49,7 +46,6 @@ export default function MarketMap({ selfCompany, competitors, onCompanyClick }) 
       isSelf: true,
     };
 
-    // Orbit radii by threat level
     const orbits = { high: 22, medium: 34, low: 44 };
     const grouped = { high: [], medium: [], low: [] };
 
@@ -76,7 +72,6 @@ export default function MarketMap({ selfCompany, competitors, onCompanyClick }) 
     return [self, ...positioned];
   }, [selfCompany, competitors]);
 
-  // Non-passive wheel listener for smooth zoom tracking
   useEffect(() => {
     const el = viewportRef.current;
     if (!el) return;
@@ -94,9 +89,8 @@ export default function MarketMap({ selfCompany, competitors, onCompanyClick }) 
     return () => el.removeEventListener('wheel', handleWheel);
   }, []);
 
-  // Mouse drag handlers
   const handleMouseDown = (e) => {
-    if (e.button !== 0) return; // Left click only
+    if (e.button !== 0) return;
     setIsDragging(true);
     dragStartRef.current = { x: e.clientX - pan.x, y: e.clientY - pan.y };
   };
@@ -113,14 +107,13 @@ export default function MarketMap({ selfCompany, competitors, onCompanyClick }) 
     setIsDragging(false);
   };
 
-  // Touch gesture handlers (drag panning & pinch zoom)
   const handleTouchStart = (e) => {
     if (e.touches.length === 1) {
       setIsDragging(true);
       const touch = e.touches[0];
       dragStartRef.current = { x: touch.clientX - pan.x, y: touch.clientY - pan.y };
     } else if (e.touches.length === 2) {
-      setIsDragging(false); // Disable panning during pinch
+      setIsDragging(false);
       const dist = Math.hypot(
         e.touches[0].clientX - e.touches[1].clientX,
         e.touches[0].clientY - e.touches[1].clientY
@@ -152,7 +145,6 @@ export default function MarketMap({ selfCompany, competitors, onCompanyClick }) 
     lastTouchDistRef.current = null;
   };
 
-  // Button actions
   const zoomIn = () => setZoom((z) => Math.min(3.0, z * 1.25));
   const zoomOut = () => setZoom((z) => Math.max(0.6, z / 1.25));
   const resetMap = () => {
@@ -193,7 +185,6 @@ export default function MarketMap({ selfCompany, competitors, onCompanyClick }) 
             border: '1px solid var(--border-subtle)',
           }}
         >
-          {/* Zoomable Container */}
           <div
             className="map-zoom-content"
             style={{
@@ -205,15 +196,12 @@ export default function MarketMap({ selfCompany, competitors, onCompanyClick }) 
               transition: isDragging ? 'none' : 'transform 250ms cubic-bezier(0.32, 0.72, 0, 1)',
             }}
           >
-            {/* Grid dot matrix background */}
             <div className="map-grid-bg" />
 
-            {/* Orbit rings */}
             <div className="orbit-ring orbit-ring-1" />
             <div className="orbit-ring orbit-ring-2" />
             <div className="orbit-ring orbit-ring-3" />
 
-            {/* Connection lines (SVG) */}
             <svg className="map-connection" viewBox="0 0 100 100" preserveAspectRatio="none">
               {nodes.slice(1).map((node) => (
                 <line
@@ -230,7 +218,6 @@ export default function MarketMap({ selfCompany, competitors, onCompanyClick }) 
               ))}
             </svg>
 
-            {/* Company nodes */}
             {nodes.map((node) => (
               <div
                 key={node.id}
@@ -251,7 +238,6 @@ export default function MarketMap({ selfCompany, competitors, onCompanyClick }) 
             ))}
           </div>
 
-          {/* Floating UI Navigation controls */}
           <div className="map-controls">
             <button className="map-control-btn" onClick={zoomIn} title="Zoom In">+</button>
             <button className="map-control-btn" onClick={zoomOut} title="Zoom Out">-</button>
