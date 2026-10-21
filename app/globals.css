@@ -1,12 +1,4 @@
-/* ============================================================
-   CrustIntel — Design System & Global Styles
-   War Room dark theme with Ethereal Glassmorphism
-   ============================================================ */
-
-/* ── CSS Custom Properties ─────────────────────────────────── */
-
 :root {
-  /* Background layers */
   --bg-deepest: #03050a;
   --bg-deep: #060914;
   --bg-surface: #0a0e20;
@@ -14,18 +6,15 @@
   --bg-card-hover: rgba(21, 29, 66, 0.95);
   --bg-elevated: #10183b;
 
-  /* Glass elements (No blur on general containers to prevent scroll lag) */
   --glass-bg: rgba(13, 20, 48, 0.92);
   --glass-border: rgba(99, 119, 255, 0.15);
   --glass-highlight: rgba(99, 119, 255, 0.08);
 
-  /* Brand */
   --brand-primary: #6366f1;
   --brand-secondary: #818cf8;
   --brand-glow: rgba(99, 102, 241, 0.3);
   --brand-subtle: rgba(99, 102, 241, 0.08);
 
-  /* Accent palette */
   --accent-cyan: #22d3ee;
   --accent-emerald: #34d399;
   --accent-amber: #fbbf24;
@@ -33,7 +22,6 @@
   --accent-violet: #a78bfa;
   --accent-orange: #fb923c;
 
-  /* Severity colours */
   --severity-critical: #ef4444;
   --severity-critical-bg: rgba(239, 68, 68, 0.12);
   --severity-high: #f97316;
@@ -43,42 +31,34 @@
   --severity-low: #22c55e;
   --severity-low-bg: rgba(34, 197, 94, 0.12);
 
-  /* Text */
   --text-primary: #e0e2eb;
   --text-secondary: #c7c4d7;
   --text-tertiary: #908fa0;
   --text-muted: #464554;
 
-  /* Borders */
   --border-subtle: rgba(99, 119, 255, 0.1);
   --border-default: rgba(99, 119, 255, 0.15);
   --border-strong: rgba(99, 119, 255, 0.25);
 
-  /* Radius */
   --radius-sm: 6px;
   --radius-md: 12px;
   --radius-lg: 20px;
   --radius-xl: 32px;
   --radius-full: 9999px;
 
-  /* Shadows */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.6);
   --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.8);
   --shadow-glow: 0 0 25px var(--brand-glow);
 
-  /* Typography (Awwwards-tier) */
   --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-display: 'Space Grotesk', var(--font-sans);
   --font-mono: 'JetBrains Mono', monospace;
 
-  /* Transitions */
   --transition-fast: 150ms cubic-bezier(0.32, 0.72, 0, 1);
   --transition-base: 350ms cubic-bezier(0.32, 0.72, 0, 1);
   --transition-slow: 600ms cubic-bezier(0.32, 0.72, 0, 1);
 }
-
-/* ── Reset & Base ──────────────────────────────────────────── */
 
 *, *::before, *::after {
   margin: 0;
@@ -108,7 +88,6 @@ body {
     radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.02) 0%, transparent 70%);
 }
 
-/* Noise overlay for organic texture */
 body::before {
   content: "";
   position: fixed;
@@ -120,8 +99,6 @@ body::before {
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
-
-/* ── Scrollbar ─────────────────────────────────────────────── */
 
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
@@ -141,14 +118,12 @@ a {
 }
 a:hover { color: var(--accent-cyan); }
 
-/* ── Heading elements ──────────────────────────────────────── */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   font-weight: 600;
   letter-spacing: -0.01em;
 }
 
-/* ── Double-Bezel nested container design ───────────────────── */
 .double-bezel {
   background: rgba(148, 163, 184, 0.02);
   border: 1px solid var(--glass-border);
@@ -178,7 +153,6 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.03);
 }
 
-/* Backward compatibility wrapper for glass-card */
 .glass-card {
   composes: double-bezel;
   background: rgba(148, 163, 184, 0.02);
@@ -196,8 +170,6 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: var(--shadow-md), 0 0 20px rgba(99, 102, 241, 0.04);
   transform: translateY(-2px);
 }
-
-/* ── Header ────────────────────────────────────────────────── */
 
 .header {
   display: flex;
@@ -303,8 +275,6 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-tertiary);
 }
 
-/* ── Metrics Bar ───────────────────────────────────────────── */
-
 .metrics-bar {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -343,8 +313,6 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 4px;
 }
 
-/* ── Dashboard Grid ────────────────────────────────────────── */
-
 .dashboard {
   display: grid;
   grid-template-columns: 1fr 400px;
@@ -368,8 +336,6 @@ h1, h2, h3, h4, h5, h6 {
   gap: 16px;
   min-height: 0;
 }
-
-/* ── Section Headers ───────────────────────────────────────── */
 
 .section-header {
   display: flex;
@@ -399,8 +365,6 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--brand-subtle);
   color: var(--brand-secondary);
 }
-
-/* ── Market Map ────────────────────────────────────────────── */
 
 .market-map {
   position: relative;
@@ -497,8 +461,6 @@ h1, h2, h3, h4, h5, h6 {
   pointer-events: none;
   z-index: 1;
 }
-
-/* ── Signal Feed ───────────────────────────────────────────── */
 
 .signal-feed {
   flex: 1;
@@ -620,8 +582,6 @@ h1, h2, h3, h4, h5, h6 {
 .severity-medium { background: var(--severity-medium-bg); color: var(--severity-medium); }
 .severity-low { background: var(--severity-low-bg); color: var(--severity-low); }
 
-/* ── Intel Brief Panel ─────────────────────────────────────── */
-
 .intel-panel {
   display: flex;
   flex-direction: column;
@@ -719,8 +679,6 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 
-/* ── Talent Flow ───────────────────────────────────────────── */
-
 .talent-flow-panel {
   display: flex;
   flex-direction: column;
@@ -782,8 +740,6 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
-/* ── Company Detail Modal ──────────────────────────────────── */
 
 .modal-overlay {
   position: fixed;
@@ -968,8 +924,6 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-secondary);
 }
 
-/* ── Search Modal ──────────────────────────────────────────── */
-
 .search-modal .modal-content {
   max-width: 560px;
   padding: 0;
@@ -1044,8 +998,6 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-tertiary);
 }
 
-/* ── Threat Score Ring ─────────────────────────────────────── */
-
 .threat-ring {
   width: 100px;
   height: 100px;
@@ -1082,8 +1034,6 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 800;
 }
 
-/* ── Responsive ────────────────────────────────────────────── */
-
 @media (max-width: 1024px) {
   .dashboard {
     grid-template-columns: 1fr;
@@ -1102,8 +1052,6 @@ h1, h2, h3, h4, h5, h6 {
   }
   .header-search-btn kbd { display: none; }
 }
-
-/* ── Utility animations ───────────────────────────────────── */
 
 @keyframes count-up {
   from { opacity: 0; transform: translateY(8px); }
@@ -1342,8 +1290,6 @@ h1, h2, h3, h4, h5, h6 {
 .btn-primary.btn-saved { background: var(--accent-emerald); }
 .btn-primary:disabled { opacity: 0.7; cursor: default; }
 
-/* ── Header additions ───────────────────────────────────────── */
-
 .settings-trigger {
   background: var(--bg-card);
   border: 1px solid var(--border-default);
@@ -1379,8 +1325,6 @@ h1, h2, h3, h4, h5, h6 {
   flex-shrink: 0;
 }
 
-/* ── Modal entrance animation (shared) ──────────────────────── */
-
 @keyframes modalIn {
   from {
     opacity: 0;
@@ -1392,7 +1336,6 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* ── Smooth Scroll-behavior on all scrollable components ────────── */
 .signal-list,
 .talent-flow-list,
 .intel-body,
@@ -1402,7 +1345,6 @@ h1, h2, h3, h4, h5, h6 {
   scroll-behavior: smooth;
 }
 
-/* ── Signal Feed & Talent Flow micro-interactions ───────────────── */
 .signal-item {
   transition: transform var(--transition-base), border-color var(--transition-base), background-color var(--transition-base), box-shadow var(--transition-base) !important;
   will-change: transform, box-shadow;
@@ -1425,7 +1367,6 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(99, 102, 241, 0.04);
 }
 
-/* ── Intel Brief Dots & Transitions ────────────────────────────── */
 .brief-dots-container {
   display: flex;
   gap: 6px;
@@ -1457,14 +1398,11 @@ h1, h2, h3, h4, h5, h6 {
   animation: fade-in 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ── Market Map viewport & zoom/pan controls ───────────────────── */
-
 .map-viewport {
   position: relative;
   overflow: hidden;
 }
 
-/* Repeated dot grid background to provide spatial anchors */
 .map-grid-bg {
   position: absolute;
   inset: -150%;
@@ -1476,7 +1414,6 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0.8;
 }
 
-/* Floating controls panel on top-right/bottom-right of map viewport */
 .map-controls {
   position: absolute;
   bottom: 16px;
@@ -1524,7 +1461,6 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 12px;
 }
 
-/* ── Claude-only badge styles ─────────────────────────────── */
 .claude-key-badge {
   display: inline-flex;
   align-items: center;

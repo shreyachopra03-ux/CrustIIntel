@@ -9,7 +9,7 @@ export default function TalentFlow({ flows, onTalentAnalyzed }) {
 
   const handleAnalyze = async (flow) => {
     const key = `${flow.from_company}→${flow.to_company}`;
-    if (agentResults[key]) return; // already fetched
+    if (agentResults[key]) return;
 
     setAnalyzing(key);
     setError(null);

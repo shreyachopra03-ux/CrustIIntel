@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 
-// Helper component for realistic logo
 const CompanyLogo = ({ company, size = 24 }) => {
   const [error, setError] = useState(false);
   const url = company.domain ? `https://logo.clearbit.com/${company.domain}` : null;
@@ -93,7 +92,6 @@ export default function SearchModal({ companies, onSelect, onClose }) {
     return () => window.removeEventListener('keydown', handleKey);
   }, [onClose]);
 
-  // Lock body scroll on mount
   useEffect(() => {
     const originalStyle = window.getComputedStyle(document.body).overflow;
     document.body.style.overflow = 'hidden';
